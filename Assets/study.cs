@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stady : MonoBehaviour
+public class study : MonoBehaviour
 {
     /**
      * 勉強メモ
