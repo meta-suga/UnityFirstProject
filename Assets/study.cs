@@ -96,18 +96,5 @@ public class study : MonoBehaviour
      *     対象のobjectに紐づいているScriptにpublic関数を定義するとadd eventで選択可能
      * 
      * 
-     *  
-     *
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
      */
 }
