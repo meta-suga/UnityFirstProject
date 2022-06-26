@@ -50,6 +50,37 @@ public class study_3drpg: MonoBehaviour
      * 　// 攻撃するときに速度を0にする
      *   animator.GetComponent<PlayerManager>().moveSpeed = 0;
      * 
+     * ・敵キャラクター配置
+     * ・なんか適当にstoreからモデルインポートして配置
+     * ・敵を自動で動かしてみる
+     * 　・navMeshAgentを使ってみる
+     * 　　inspectorからadd componentで選択
+     * 　　window→AI→navigation
+     * 　　地面などのオブジェクトをstaticで認識させてあげる
+     * 　　
+     * ・EnemyManagerを作成して、コードから追跡対象を設定する
+     * 　プレイヤーを追跡
+     * 　NavMeshAgentに追跡対象を連携する。
+     * 　例）　※詳細はEnemyManager参照
+     * 　agent.destination = target.position;
+     * 　
+     * 　近づきすぎとか速さは、inspectorで設定可能
+     * 　NavMeshAgentのspeedとかstopping Distance
+     * 　
+     * ・敵キャラクターのアニメーション設定
+     * 　・基本はプレイヤーと一緒で、条件遷移は距離を対象にする
+     * 　以下でいけそう
+     * 　animator.SetFloat("Distance", agent.remainingDistance);
+     * 
+     * ・ずっと追いかけてくるので、修正
+     * 　（アイドル状態でも、攻撃しながらも追いかけてくる）
+     * 　アイドル状態の時と、攻撃の時はスピードを0にする
+     * 　移動する時はスピードを2くらいにする
+     * 　Behaviourで対応
+     * 
+     * 
+     * 
+     * 
      * 
      * 
      * 

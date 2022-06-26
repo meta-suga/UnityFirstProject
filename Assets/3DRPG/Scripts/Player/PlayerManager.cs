@@ -24,7 +24,6 @@ public class PlayerManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("攻撃");
             animator.SetTrigger("Attack");
         }
     }
