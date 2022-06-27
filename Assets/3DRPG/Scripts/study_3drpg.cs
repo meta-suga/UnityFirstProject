@@ -78,8 +78,52 @@ public class study_3drpg: MonoBehaviour
      * 　移動する時はスピードを2くらいにする
      * 　Behaviourで対応
      * 
+     * ・攻撃時にダメージを与える実装
+     * 　・武器に当たり判定を入れる
+     * 　　・武器にmesh colliderをaddする
+     * 　　　convexとis triggerにチェック入れる
+     * 　・相手にも当たり判定を入れる
+     * 　　・相手自身にCapsule colliderをaddする
+     * 　　・当たり判定の大きさを決める
+     * 　　・is triggerにチェック入れる
+     * 　　
+     * 　・OnTriggerEnterで当たり判定を入れる
+     * 　　武器にかかわらず、当たったらログ出るまでできた
+     * 　
+     * ・武器に当たったらダメージを与える
+     * 　Scriptを新規作成して、publicの変数を定義して武器にaddする
+     * 　プレイヤーのonTriggerに以下を記載
+     *       private void OnTriggerEnter(Collider other)
+     *       {
+     *           Damager damager = other.GetComponent<Damager>();
+     *           if (damager != null) {
+     *               // ダメージを持っているものにぶつかった場合の処理
+     *               Debug.Log("ダメージを受けた");
+     *           }
+     *       }
+     * 　other.GetComponentで当たり判定を行いたいobjectを選択できる
      * 
+     * ・ダメージを受けた時のアニメーションをつける
+     * 　ダメージを受けるのは、いつでも遷移したいので、Any Stateからトランザクションを紐づける
+     * 　triggerでダメージを受けたら遷移するように設定
      * 
+     * ・武器に当たるだけでダメージを受けてしまう（構えている状態でも）修正
+     * 　animation clipを触る
+     * 　攻撃の振り始めにadd event
+     * 　攻撃の振り切ったところでadd event
+     * 　　振り始めのタイミングで、武器のcolliderを無効化する
+     * 　　例）
+     * 　　weaponCollider.enabled = false;
+     * 　　
+     * 　　publicでcolliderの変数を定義して、
+     * 　　add eventで使用する関数で有効、無効を切り替える
+     * 　グローバル変数で定義した後はそのゲームオブジェクトの変数に対象の武器colliderを忘れずに設定しておく
+     * 
+     * ・ダメージを受けている時も移動できてしまうので、修正
+     * 　攻撃の時と同じでbehaviorでスピードを0にしてあげる
+     * 　
+     * ・ダメージ受けている時に再度攻撃を受けると、またダメージを受けるアニメーションをするので修正
+     * 　ダメージを受けるアニメーションのbehaviorでanimator.ResetTriggerを行う
      * 
      * 
      * 
