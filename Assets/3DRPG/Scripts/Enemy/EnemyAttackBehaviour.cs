@@ -7,6 +7,7 @@ public class EnemyAttackBehaviour : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.GetComponent<EnemyManager>().LookAtTarget();
         animator.GetComponent<NavMeshAgent>().speed = 0;
     }
 
